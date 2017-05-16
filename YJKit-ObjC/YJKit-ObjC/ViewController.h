@@ -6,7 +6,7 @@
 //  Copyright © 2017年 杨坚. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "YJKit.h"
 
 @interface ViewController : UIViewController
 
