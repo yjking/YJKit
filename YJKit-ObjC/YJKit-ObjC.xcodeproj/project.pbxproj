@@ -160,8 +160,8 @@
 				C7EB22FF1EBC84090058098F /* Assets.xcassets */,
 				C7EB23011EBC84090058098F /* LaunchScreen.storyboard */,
 				C7EB23041EBC84090058098F /* Info.plist */,
-				C7A7C8BB1EC8A548006C9B0E /* ThirdParty */,
 				C7D1CB631EBE1F4300DF7EA2 /* YJKit */,
+				C7A7C8BB1EC8A548006C9B0E /* ThirdParty */,
 				C7EB22F31EBC84090058098F /* Supporting Files */,
 			);
 			path = "YJKit-ObjC";

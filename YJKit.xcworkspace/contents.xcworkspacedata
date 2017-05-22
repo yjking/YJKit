@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:YJKit-Swift/YJKit-Swift.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:YJKit-ObjC/YJKit-ObjC.xcodeproj">
    </FileRef>
 </Workspace>
