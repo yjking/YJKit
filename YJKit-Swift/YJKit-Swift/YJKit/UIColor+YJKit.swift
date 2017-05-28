@@ -9,18 +9,23 @@
 import Foundation
 
 extension UIColor {
+    
+    /// 根据整型的rgb值得出color
     class open func color(rgb: Int) -> UIColor {
         return UIColor.color(rgb: rgb, alpha: 1)
     }
     
+    /// 根据整型的rgb值得出color，alpha为小数
     class open func color(rgb: Int, alpha: Double) -> UIColor {
         return UIColor.init(colorLiteralRed:((rgb >> 16) & 0xFF) * 0.0039215686, green:((rgb >> 8) & 0xFF) * 0.0039215686, blue:(rgb & 0xFF) * 0.0039215686, alpha:alpha)
     }
     
+    /// 根据十六进制字符串得出color（开头可以包含#号）
     class open func color(hex: String) -> UIColor {
         return UIColor.color(hex: hex, alpha: 1)
     }
     
+    /// 根据十六进制字符串得出color（开头可以包含#号），alpha为小数
     class open func color(hex: String, alpha: Double) -> UIColor {
         var cString = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         
@@ -43,6 +48,7 @@ extension UIColor {
         return UIColor.init(colorLiteralRed:(r / 255.0), green:(g / 255.0), blue:(b / 255.0), alpha:alpha)
     }
     
+    /// 倒推得出rgb值
     var argb: Int {
         var argb = 0
         var r = 0.0, g, b, a

@@ -9,6 +9,8 @@
 import Foundation
 
 extension UIView {
+    
+    /// 截图
     var imageRender: UIImage {
         UIGraphicsBeginImageContext(.bounds.size)
         .layer.renderInContext(UIGraphicsGetCurrentContext())
@@ -17,6 +19,7 @@ extension UIView {
         return image
     }
     
+    /// 截图（图像按当前屏幕的倍率）
     var imageRenderScale: UIImage {
         UIGraphicsBeginImageContextWithOptions(.bounds.size, true, UIScreen.mainScreen.scale)
         .layer.renderInContext(UIGraphicsGetCurrentContext())
@@ -25,6 +28,7 @@ extension UIView {
         return image
     }
     
+    /// 截图（图像按当前屏幕的2倍）
     var imageRenderRetina: UIImage {
         UIGraphicsBeginImageContext(.bounds.size, true, 2)
             .layer.renderInContext(UIGraphicsGetCurrentContext())

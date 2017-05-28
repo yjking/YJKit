@@ -10,9 +10,24 @@
 
 @interface YJKProgressHUD : NSObject <MBProgressHUDDelegate>
 
+/**
+ 单行文字提示，在Window显示
+ */
 + (void)showWithText:(NSString *)text;
+
+/**
+ 多行文字提示，在Window显示
+ */
 + (void)showWithDetails:(NSString *)text;
+
+/**
+ 单行文字提示，在指定View显示
+ */
 + (void)showWithText:(NSString *)text view:(UIView *)view;
+
+/**
+ 多行文字提示，在指定View显示
+ */
 + (void)showWithDetails:(NSString *)text view:(UIView *)view;
 
 @end

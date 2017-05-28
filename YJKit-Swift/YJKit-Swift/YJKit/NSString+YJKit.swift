@@ -9,6 +9,8 @@
 import Foundation
 
 extension NSString {
+    
+    /// 准确比较版本号大小
     open func compareVersion(version: NSString) -> ComparisonResult {
         let arr0 = self.components(separatedBy: ".")
         let arr1 = version.components(separatedBy: ".")
@@ -49,6 +51,7 @@ extension NSString {
         return result
     }
     
+    /// md5加密（其中十六进制小写）
     var md5: String! {
         
         let str = self.cString(using: String.Encoding.utf8)
@@ -68,6 +71,7 @@ extension NSString {
         return String(format: hash as String)
     }
     
+    /// md5加密（其中十六进制大写）
     var md5Uppercase: String! {
         
         let str = self.cString(using: String.Encoding.utf8)
@@ -87,30 +91,37 @@ extension NSString {
         return String(format: hash as String)
     }
     
+    /// 验证是否电子邮箱
     var evaluateEmail: Bool {
         return NSPredicate.init(format: "SELF MATCHES %@", "\\b([a-zA-Z0-9%_.+\\-]+)@([a-zA-Z0-9.\\-]+?\\.[a-zA-Z]{2,6})\\b").evaluate(with: self)
     }
     
+    /// 验证是否整数
     var evaluateInteger: Bool {
         return NSPredicate.init(format: "SELF MATCHES %@", "^[0-9]+$").evaluate(with: self)
     }
     
+    /// 验证是否手机号（11位）
     var evaluateMobile: Bool {
         return NSPredicate.init(format: "SELF MATCHES %@", "(^(13\\d|15[^4,\\D]|17[13678]|18\\d)\\d{8}|170[^346,\\D]\\d{7})$").evaluate(with: self) && self.length == 11
     }
     
+    /// 验证是否纯英文
     var evaluateEnglish: Bool {
         return NSPredicate.init(format: "SELF MATCHES %@", "^[\\x20-\\x7e]*$").evaluate(with: self)
     }
     
+    /// 计算Label的Size
     open func caculationSize(label: UILabel) -> CGSize {
         return .caculationSize(label: label.frame.size.width, font: label.font)
     }
     
+    /// 指定width和字体计算Size
     open func caculationSize(width: CGFloat, font: UIFont) -> CGSize {
         return .boundingRect(with: CGSizeMake(width, MAXFLOAT), options: NSStringDrNSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeadingawingOptions, attributes: [NSFontAttributeName : font]?, context: nil).size
     }
     
+    /// 中文算1个字，英文算半个字
     var unicodeLength: Int {
         var asciiLength = 0
         let length = self.length
@@ -128,6 +139,7 @@ extension NSString {
         return unicodeLength
     }
     
+    /// 清除两端空格
     open func trim() -> String {
         var result = String.init(self)
         while result.hasPrefix(" ") || result.hasPrefix("\\u3000") {
@@ -141,6 +153,7 @@ extension NSString {
         return result
     }
     
+    /// 清除开头空格
     open func trimLeft() -> String {
         var result = String.init(self)
         while result.hasPrefix(" ") || result.hasPrefix("\\u3000") || result.hasPrefix("\\n") {
@@ -150,6 +163,7 @@ extension NSString {
         return result
     }
     
+    /// 清除结尾空格
     open func trimRight() -> String {
         var result = String.init(self)
         while result.hasSuffix(" ") || result.hasSuffix("\\u3000") || result.hasSuffix("\\n") {
@@ -159,15 +173,25 @@ extension NSString {
         return result
     }
     
+    /// iOS中\r是换行的，而安卓不换行，这里是兼容转换
     open func replaceWrap() -> String {
         var result = String.init(self)
         result = result.replacingOccurrences(of: "\\r\\n", with: "\\n")
         return result.replacingOccurrences(of: "\\r", with: "\\n")
     }
     
+    /// 转换成拼音
+    var transformToPinyin: NSString {
+        var mutableString = NSMutableString.init(string: self)
+        CFStringTransform(CFMutableStringRef(mutableString), NULL, kCFStringTransformToLatin, false)
+        mutableString = mutableString.folding(options: CompareOptions.diacriticInsensitive, locale: NSLocale.current)
+        return mutableString.replacingOccurrences(of: "'", with: "")
+    }
 }
 
 extension NSAttributedString {
+    
+    /// 指定width计算Size
     open func caculationSize(width: CGFloat) -> CGSize {
         return .boundingRect(with: CGSizeMake(width, MAXFLOAT), options: NSStringDrNSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeadingawingOptions, context: nil).size
     }

@@ -11,9 +11,24 @@
 
 @interface YJKPacketConnection : NSObject
 
+/**
+ 发送请求
+ */
 + (void)sendRequest:(YJKRequest *)request finished:(void (^)(YJKResponse *response))finished;
+
+/**
+ 从缓存中获取响应
+ */
 + (YJKResponse *)sendRequest:(YJKRequest *)request;
+
+/**
+ 直接获取缓存
+ */
 + (NSData *)cacheRequest:(YJKRequest *)request;
+
+/**
+ 直接保存缓存
+ */
 + (void)cacheSave:(YJKRequest *)request data:(NSData *)data;
 
 @end

@@ -10,8 +10,19 @@
 
 @interface UIView (YJKit)
 
+/**
+ 截图
+ */
 - (UIImage *)imageRender;
+
+/**
+ 截图（图像按当前屏幕的倍率）
+ */
 - (UIImage *)imageRenderScale;
+
+/**
+ 截图（图像按当前屏幕的2倍）
+ */
 - (UIImage *)imageRenderRetina;
 
 @end
