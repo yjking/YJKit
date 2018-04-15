@@ -25,4 +25,15 @@
  */
 - (UIImage *)imageRenderRetina;
 
+- (CGFloat)x;
+- (CGFloat)y;
+- (CGFloat)width;
+- (CGFloat)height;
+- (CGFloat)centerX;
+- (CGFloat)centerY;
+- (CGSize)size;
+- (CGPoint)origin;
+- (CGFloat)right;
+- (CGFloat)bottom;
+
 @end

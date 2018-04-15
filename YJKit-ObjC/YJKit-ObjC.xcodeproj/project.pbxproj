@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7065EA82083435400F29E1D /* YJKCenterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C7065EA72083435400F29E1D /* YJKCenterButton.m */; };
 		C74BE4F91ECAF383005F2CF9 /* YJKImageActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C74BE4F81ECAF383005F2CF9 /* YJKImageActionSheet.m */; };
 		C74BE4FC1ECAF558005F2CF9 /* YJKPacketConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = C74BE4FB1ECAF557005F2CF9 /* YJKPacketConnection.m */; };
 		C74BE4FF1ECAF5D4005F2CF9 /* YJKRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C74BE4FE1ECAF5D4005F2CF9 /* YJKRequest.m */; };
@@ -30,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C7065EA62083435400F29E1D /* YJKCenterButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJKCenterButton.h; sourceTree = "<group>"; };
+		C7065EA72083435400F29E1D /* YJKCenterButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJKCenterButton.m; sourceTree = "<group>"; };
 		C74BE4F71ECAF383005F2CF9 /* YJKImageActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJKImageActionSheet.h; sourceTree = "<group>"; };
 		C74BE4F81ECAF383005F2CF9 /* YJKImageActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJKImageActionSheet.m; sourceTree = "<group>"; };
 		C74BE4FA1ECAF557005F2CF9 /* YJKPacketConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJKPacketConnection.h; sourceTree = "<group>"; };
@@ -109,6 +112,8 @@
 				C7D1CB691EBE246500DF7EA2 /* NSDictionary+YJKit.m */,
 				C76441A01EBF7216000F5F3B /* NSString+YJKit.h */,
 				C76441A11EBF7216000F5F3B /* NSString+YJKit.m */,
+				C7065EA62083435400F29E1D /* YJKCenterButton.h */,
+				C7065EA72083435400F29E1D /* YJKCenterButton.m */,
 				C74BE4F71ECAF383005F2CF9 /* YJKImageActionSheet.h */,
 				C74BE4F81ECAF383005F2CF9 /* YJKImageActionSheet.m */,
 				C7A7C8C01EC8A59D006C9B0E /* YJKProgressHUD.h */,
@@ -263,6 +268,7 @@
 				C7EB22F81EBC84090058098F /* AppDelegate.m in Sources */,
 				C7EB22F51EBC84090058098F /* main.m in Sources */,
 				C74BE5021ECAF634005F2CF9 /* YJKResponse.m in Sources */,
+				C7065EA82083435400F29E1D /* YJKCenterButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

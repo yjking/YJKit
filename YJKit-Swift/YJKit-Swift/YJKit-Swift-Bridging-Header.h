@@ -10,6 +10,5 @@
 #define YJKit-Swift-Bridging-Header_h
 
 #import <CommonCrypto/CommonDigest.h>
-#import "MBProgressHUD.h"
 
 #endif /* YJKit-Swift-Bridging-Header_h */

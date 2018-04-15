@@ -10,7 +10,7 @@ import Foundation
 
 /// 获取caches目录
 public func cachesPath() -> String {
-    return NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
+    return NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
 }
 
 /// 是否简体中文

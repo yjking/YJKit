@@ -1,19 +1,19 @@
 //
-//  NSDictionary+YJKit.swift
+//  Dictionary+YJKit.swift
 //  YJKit-Swift
 //
-//  Created by 杨坚 on 2017/5/18.
-//  Copyright © 2017年 杨坚. All rights reserved.
+//  Created by 杨坚 on 2018/4/15.
+//  Copyright © 2018年 杨坚. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-extension NSDictionary {
+extension Dictionary {
     
     /// 直接获取指定Key的Bool
-    open func bool(forKey: Any) -> Bool {
+    public func bool(forKey: Key) -> Bool {
         var value = false
-        let obj = self.object(forKey: forKey)
+        let obj = self[forKey]
         if obj is NSNumber {
             let number: NSNumber = obj as! NSNumber
             value = number.boolValue
@@ -22,9 +22,9 @@ extension NSDictionary {
     }
     
     /// 直接获取指定Key的Int
-    open func int(forKey: Any) -> Int {
+    public func int(forKey: Key) -> Int {
         var value = 0
-        let obj = self.object(forKey: forKey)
+        let obj = self[forKey]
         if obj is NSNumber {
             let number: NSNumber = obj as! NSNumber
             value = number.intValue
@@ -37,9 +37,9 @@ extension NSDictionary {
     }
     
     /// 直接获取指定Key的Int64
-    open func int64(forKey: Any) -> Int64 {
+    public func int64(forKey: Key) -> Int64 {
         var value: Int64 = 0
-        let obj = self.object(forKey: forKey)
+        let obj = self[forKey]
         if obj is NSNumber {
             let number: NSNumber = obj as! NSNumber
             value = number.int64Value
@@ -52,9 +52,9 @@ extension NSDictionary {
     }
     
     /// 直接获取指定Key的UInt
-    open func uint(forKey: Any) -> UInt {
+    public func uint(forKey: Key) -> UInt {
         var value: UInt = 0
-        let obj = self.object(forKey: forKey)
+        let obj = self[forKey]
         if obj is NSNumber {
             let number: NSNumber = obj as! NSNumber
             value = number.uintValue
@@ -67,9 +67,9 @@ extension NSDictionary {
     }
     
     /// 直接获取指定Key的Double
-    open func double(forKey: Any) -> Double {
+    public func double(forKey: Key) -> Double {
         var value: Double = 0
-        let obj = self.object(forKey: forKey)
+        let obj = self[forKey]
         if obj is NSNumber {
             let number: NSNumber = obj as! NSNumber
             value = number.doubleValue
@@ -81,23 +81,31 @@ extension NSDictionary {
         return value;
     }
     
-    /// 直接获取指定Key的NSString
-    open func string(forKey: Any) -> NSString {
-        var str: NSString = ""
-        let obj = self.object(forKey: forKey)
-        if obj is NSString {
-            str = obj as! NSString
+    /// 直接获取指定Key的Float
+    public func float(forKey: Key) -> Float {
+        var value: Float = 0
+        let obj = self[forKey]
+        if obj is NSNumber {
+            let number: NSNumber = obj as! NSNumber
+            value = number.floatValue
+        }
+        else if obj is NSString {
+            let str: NSString = obj as! NSString
+            value = str.floatValue
+        }
+        return value;
+    }
+    
+    /// 直接获取指定Key的String
+    public func string(forKey: Key) -> String {
+        var str = ""
+        let obj = self[forKey]
+        if obj is String {
+            str = obj as! String
+        }
+        else if obj is NSNumber {
+            str = "\(obj as! NSNumber)"
         }
         return str;
-    }
-}
-
-extension NSMutableDictionary {
-    
-    /// 直接设置值，而不用担心其为nil而崩溃
-    open func setNullObject(anObject: Any, forKey: Any) {
-        if anObject is NSString || anObject is NSDictionary || anObject is NSArray || anObject is NSNumber || anObject is NSData {
-            self[forKey] = anObject
-        }
     }
 }

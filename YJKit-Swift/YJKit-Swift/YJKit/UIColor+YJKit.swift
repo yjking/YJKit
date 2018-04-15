@@ -6,53 +6,41 @@
 //  Copyright © 2017年 杨坚. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension UIColor {
     
-    /// 根据整型的rgb值得出color
-    class open func color(rgb: Int) -> UIColor {
-        return UIColor.color(rgb: rgb, alpha: 1)
+    /// 根据整型的rgb值得出color，alpha为小数
+    public convenience init(r: Int, g: Int, b: Int, alpha: CGFloat = 1.0) {
+        self.init(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: alpha)
     }
     
     /// 根据整型的rgb值得出color，alpha为小数
-    class open func color(rgb: Int, alpha: Double) -> UIColor {
-        return UIColor.init(colorLiteralRed:((rgb >> 16) & 0xFF) * 0.0039215686, green:((rgb >> 8) & 0xFF) * 0.0039215686, blue:(rgb & 0xFF) * 0.0039215686, alpha:alpha)
-    }
-    
-    /// 根据十六进制字符串得出color（开头可以包含#号）
-    class open func color(hex: String) -> UIColor {
-        return UIColor.color(hex: hex, alpha: 1)
+    public convenience init(rgb: Int, alpha: CGFloat = 1.0) {
+        let r = (rgb >> 16) & 0xFF
+        let g = (rgb >> 8) & 0xFF
+        let b = rgb & 0xFF
+        self.init(r: r, g: g, b: b, alpha: alpha)
     }
     
     /// 根据十六进制字符串得出color（开头可以包含#号），alpha为小数
-    class open func color(hex: String, alpha: Double) -> UIColor {
-        var cString = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
-        
-        if cString.hasPrefix("#") {
-            cString = cString.substring(from: 1)
+    public convenience init(hex: String, alpha: CGFloat = 1.0) {
+        let formatted = hex.replacingOccurrences(of: "0x", with: "").replacingOccurrences(of: "#", with: "")
+        if let rgb = Int(formatted, radix: 16) {
+            self.init(rgb: rgb, alpha: alpha)
+        } else {
+            self.init()
         }
-        
-        if cString.length != 6 {
-            return UIColor.clear
-        }
-        
-        let rString = cString.substring(with: 0..<2)
-        let gString = cString.substring(with: 2..<4)
-        let bString = cString.substring(with: 4..<6)
-        var r: Int, g, b
-        Scanner.init(string: rString).scanInt(&r)
-        Scanner.init(string: gString).scanInt(&g)
-        Scanner.init(string: bString).scanInt(&b)
-        
-        return UIColor.init(colorLiteralRed:(r / 255.0), green:(g / 255.0), blue:(b / 255.0), alpha:alpha)
     }
-    
+
     /// 倒推得出rgb值
     var argb: Int {
         var argb = 0
-        var r = 0.0, g, b, a
-        .getRed(&r, &g, &b, &a)
+        var r = CGFloat(0)
+        var g = CGFloat(0)
+        var b = CGFloat(0)
+        var a = CGFloat(0)
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
         argb += Int(a * 255) << 24
         argb += Int(r * 255) << 16
         argb += Int(g * 255) << 8

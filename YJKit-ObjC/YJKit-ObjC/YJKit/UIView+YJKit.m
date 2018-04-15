@@ -26,13 +26,52 @@
     return image;
 }
 
-- (UIImage *)imageRenderRetina
-{
+- (UIImage *)imageRenderRetina {
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, YES, 2);
     [self.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
+}
+
+- (CGFloat)x {
+    return self.frame.origin.x;
+}
+
+- (CGFloat)y {
+    return self.frame.origin.y;
+}
+
+- (CGFloat)width {
+    return self.frame.size.width;
+}
+
+- (CGFloat)height {
+    return self.frame.size.height;
+}
+
+- (CGFloat)centerX {
+    return self.center.x;
+}
+
+- (CGFloat)centerY {
+    return self.center.y;
+}
+
+- (CGSize)size {
+    return self.frame.size;
+}
+
+- (CGPoint)origin {
+    return self.frame.origin;
+}
+
+- (CGFloat)right {
+    return self.frame.origin.x + self.frame.size.width;
+}
+
+- (CGFloat)bottom {
+    return self.frame.origin.y + self.frame.size.height;
 }
 
 @end
